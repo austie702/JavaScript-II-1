@@ -1,14 +1,33 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
+console.log();
+console.log('* * * Closures - START * * *');
 
+const kiss = () => {
+  let simpleClosure = 'I am outside.';
+  return () => {
+    simpleClosure = 'I am inside now.';
+    return simpleClosure;
+  }
+}
+// const frenchKiss = kiss();
+// console.log(frenchKiss());
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
-
 
 // ==== Challenge 2: Create a counter function ====
 const counter = () => {
   // Return a function that when invoked increments and returns a counter variable.
+  let count = 0;
+  return () => {
+    count++;
+    return count;
+  }
 };
+// const newCounter = counter();
+// console.log(newCounter());
+// console.log(newCounter());
+// console.log(newCounter());
 // Example usage: const newCounter = counter();
 // newCounter(); // 1
 // newCounter(); // 2
@@ -18,4 +37,25 @@ const counterFactory = () => {
   // Return an object that has two methods called `increment` and `decrement`.
   // `increment` should increment a counter variable in closure scope and return it.
   // `decrement` should decrement the counter variable and return it.
+  let count = 0;
+
+  return counterObj = {
+    increment: () => {
+      return () => {
+        return ++count;
+      };
+    },
+    decrement: () => {
+      return () => {
+        return --count;
+      }
+    }
+  };
 };
+const counterFactoryUp = counterFactory().increment();
+console.log(counterFactoryUp());
+console.log(counterFactoryUp());
+console.log(counterFactoryUp());
+
+console.log('* * * Closures - END * * *');
+console.log();
